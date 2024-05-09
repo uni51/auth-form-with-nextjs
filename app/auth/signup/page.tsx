@@ -1,14 +1,17 @@
+import InputField from "@/app/features/auth/components/InputField";
 import React from "react";
 
 const Signup = () => {
   return (
-    <div>
-      <h2>新規登録</h2>
+    <div className="mx-auto max-w-sm my-14">
+      <h2 className="text-center font-medium text-2xl mb-4">新規登録</h2>
       <form>
-        <input type="text" />
-        <input type="text" />
-        <input type="text" />
-        <button type="submit">登録</button>
+        <InputField />
+        <InputField />
+        <InputField />
+        <div className="mt-4">
+          <button type="submit">登録</button>
+        </div>
       </form>
     </div>
   );
