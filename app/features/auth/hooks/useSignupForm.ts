@@ -1,9 +1,11 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { signupFromSchema } from "../lib/signupFormSchema";
+import { z } from "zod";
 
 export const useSingupForm = () => {
-  const form = useForm({
-    resolver: zodResolver(),
+  const form = useForm<z.infer<typeof signupFromSchema>>({
+    resolver: zodResolver(signupFromSchema),
     defaultValues: {
       username: "",
       email: "",
@@ -11,10 +13,10 @@ export const useSingupForm = () => {
     },
   });
 
-  const onsubmit: SubmitHandler = (data) => {
+  const onSubmit: SubmitHandler<z.infer<typeof signupFromSchema>> = (data) => {
     const { username, email, password } = data;
     console.log(username, email, password);
   };
 
-  return { form, onsubmit };
+  return { form, onSubmit };
 };
